@@ -156,3 +156,15 @@ def build(image_set, args):
     img_folder, ann_file = PATHS[image_set]
     dataset = CocoDetection(img_folder, ann_file, transforms=make_coco_transforms(image_set), return_masks=args.masks)
     return dataset
+
+def build_bdd100k(image_set, args):
+    # root = Path(args.coco_path)
+    PATHS = {
+        "train": ('/shared/xudongliu/bdd100k/100k/train/', '/shared/xudongliu/bdd100k/labels/bdd100k_labels_images_det_coco_train.json'),
+        "val": ('/shared/xudongliu/bdd100k/100k/train/', '/shared/xudongliu/bdd100k/labels/bdd100k_labels_images_det_coco_val.json'),
+    }
+
+    img_folder, ann_file = PATHS[image_set]
+    dataset = CocoDetection(img_folder, ann_file, transforms=make_coco_transforms(image_set), return_masks=args.masks)
+    return dataset
+
